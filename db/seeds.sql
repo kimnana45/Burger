@@ -1,0 +1,2 @@
+-- insert in three entries --
+-- then run schema and seed in mysql --
