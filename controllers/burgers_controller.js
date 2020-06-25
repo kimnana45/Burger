@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
     res.render('index', hbsObj);
 });
 
-//make new burger
+// make new burger
 // router.post('/api/burgers', (req, res) => {
 //     burger.create(["burger_name", "devoured"],
 //         [req.body.name, req.body.devoured],
