@@ -1,1 +1,51 @@
 {{!-- create button that submit users input into database  --}}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Eat Da Burger!</h1>
+    </div>
+    <form class="create-form">
+        <div class="form-group">
+            <label for="newBurger">Order Burgers</label>
+            <input type="text" id="newBurger" name="burger">
+            <button type="submit" class="" id="addBurger">
+                <span class="fa fa-thumbs-up"></span>
+            </button>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-defaul">
+                <div class="panel-heading" id="left">Burgers To Eat</div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+                        <span><strong>{{this.id}} - {{this.burger_name}}</strong></span>
+                        <button class="eatBurger btn btn-warning" id="eatBtn" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fas fa-teeth-open"></span></button>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-defaul">
+                <div class="panel-heading" id="right">Burgers Devoured!</div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong>{{this.id}} - {{this.burger_name}}</strong></span>
+                        <button class="deleteBurger btn btn-danger" id="deleteBtn" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{!-- row div --}}
+    </div>
+    {{!-- container div --}}
+</div>
