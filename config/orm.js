@@ -1,19 +1,12 @@
 //require connection.js
-const connection = require('./connection');
+const connection = require("../config/connection");
 
-createQmark = num => {
+function objToSql(ob) {
     let arr = [];
-    for ( let i =0; i<num; i++){
-        arr.push('?')
-    }
-    return arr.toString();
-}
 
-translateSql = ob => {
-    let arr = [];
     for (let key in ob) {
         let value = ob[key];
-        if (Object.hasOwnProperty.call(ob,key)) {
+        if (Object.hasOwnProperty.call(ob, key)) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
             }
@@ -21,38 +14,37 @@ translateSql = ob => {
         }
     }
     return arr.toString();
-}
+};
 
 let orm = {
-    all: function(table, cb) {
-        let query = `SELECT * FROM ${table};`;
-        console.log(query);
-        connection.query(query, (err,res) => {
+    selectAll: function (tableInput, cb) {
+        let queryString = `SELECT * FROM ${tableInput};`;
+        connection.query(queryString, (err, res) => {
+            if (err) throw err;
+            cb(res);
+        });
+    },
+    insertOne: (table, column, values, cb) => {
+        let queryString = `INSERT INTO ${table} ( ${column.toString()} ) VALUES (?,?)`;
+
+        console.log("Inserted: ");
+        console.log(queryString);
+
+        connection.query(queryString, values, (err, res) => {
+            if (err) throw err;
+            cb(res);
+        });
+    },
+    updateOne: (table, columnValues, condition, cb) => {
+        let queryString = `UPDATE ${table} SET ${objToSql(columnValues)} WHERE ${condition}`;
+
+        console.log(queryString);
+
+        connection.query(queryString, (err, res) => {
             if (err) throw err;
             cb(res);
         })
-    },
-    // create: (table, column, value, cb) => {
-    //     let query = `INSERT INTO ${table} (${column.toString()}) VALUES (${createQmark(value.length)})`;
-    //     connection.query(query, value, (err,res) => {
-    //         if (err) throw err;
-    //         cb(res);
-    //     })
-    // },
-    // update: (table, colVal, condition, cb) => {
-    //     let query = `UPDATE ${table} SET ${translateSql(colVal)} WHERE ${condition}`;
-    //     connection.query(query, (err,res) => {
-    //         if (err) throw err;
-    //         cb(res);
-    //     })
-    // },
-    // delete: (table, condition, cb) => {
-    //     let query = `DELETE FROM ${table} WHERE ${condition}`;
-    //     connection.query(query,(err,res) => {
-    //         if (err) throw err;
-    //         cb(res);
-    //     })
-    // }
+    }
 };
 
 module.exports = orm;

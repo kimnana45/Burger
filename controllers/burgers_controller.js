@@ -1,53 +1,34 @@
-//inport express
-const express = require('express');
-//inport burger.js
-const burger = require('../models/burger');
-//create router
+const express = require("express");
 const router = express.Router();
+const burger = require("../models/burger");
 
-//get all the data and display on the page 
-router.get('/', function(req, res) {
-    burger.all(function(data) {
-        const hbsObj = { burgers: data }
+router.get("/", (req, res) => {
+    burger.selectAll(data => {
+        const burgerObj = { burgers: data };
+        console.log(burgerObj);
+        res.render("index", burgerObj);
     });
-    console.log(hbsObj);
-    res.render('index', hbsObj);
 });
 
-// make new burger
-// router.post('/api/burgers', (req, res) => {
-//     burger.create(["burger_name", "devoured"],
-//         [req.body.name, req.body.devoured],
-//         results => res.json({ id: results.insertId }));
-// });
+router.post("/api/burgers", (req, res) => {
+    burger.insertOne(["burger_name", "devoured"],
+        [req.body.burger_name, req.body.devoured],
+        result => res.json({ id: result.insertId }));
+});
 
-//change burger status to devoured 
-// router.put('/api/burgers/:id', (req, res) => {
-//     let condition = `id = ${req.params.id}`;
-//     console.log("condition", condition);
+router.put("/api/burgers/:id", (req, res) => {
+    const condition = `id = ${req.params.id}`;
 
-//     burger.update({ devoured: req.body.devoured },
-//         condition, (results) => {
-//             if (results.changeRows == 0) {
-//                 return res.status(404).end();
-//             } else {
-//                 res.status(200).end();
-//             }
-//         });
-// });
+    console.log("condition:", condition);
 
-//delete burger
-// router.delete('/api/burgers/:id', (req, res) => {
-//     let condition = `id = ${req.params.id}`;
-//     console.log("condition", condition);
-    
-//     burger.delete(condition, (results) => {
-//         if (results.affectedRows == 0) {
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
+    burger.updateOne({ devoured: req.body.devoured },
+        condition, result => {
+            if (result.changedRows == 0) {
+                return res.status(404).end();
+            } else {
+                res.status(200).end();
+            };
+        });
+});
 
 module.exports = router;

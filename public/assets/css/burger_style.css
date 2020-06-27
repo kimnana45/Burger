@@ -1,0 +1,43 @@
+body {
+    background-color: lightskyblue;
+}
+
+h1 {
+    text-align: center;
+    color: limegreen;
+    font-family: 'Amatic SC', cursive;
+    font-size: 75px;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;;
+    font-weight: bolder;
+    color: darkorange;
+}
+
+.burgerList {
+    margin-left: 40px; 
+    padding: 0.5rem;
+    margin-top: 25px;
+}
+
+.header {
+    padding: 0.5rem;
+    margin-top: 25px;
+    position: center;
+}
+
+h5 {
+    font-family: 'Indie Flower', cursive;
+    color: green;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.subHeading {
+    text-align: center;
+    margin: 15px;
+}
