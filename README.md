@@ -10,6 +10,6 @@ Each burger in the waiting area also has a Devour it! button. When the user clic
 The app will store every burger in a database, whether devoured or not.
 
 ## Technologies Used 
-MySQL, Node.js, Express, Handlebars
+MySQL, Node.js, Express, Handlebars, and customized ORM.
 
 
