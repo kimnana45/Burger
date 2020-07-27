@@ -13,7 +13,7 @@ The app will store every burger in a database, whether devoured or not.
 MySQL, Node.js, Express, Handlebars, and customized ORM.
 This app follows the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 
-## Start 
+## How It Works 
 This is how the page look when it first load. 
 
 <img src="public/assets/demo/burgerApp.png">
@@ -26,4 +26,4 @@ The burger will appear on the left column title "Burger To Eat".
 
 <img src="public/assets/demo/ThisBurger.png">
 
-
+Once the user click the "Done!" button, the burger will transfer to the right column title "Burger Eaten". 
