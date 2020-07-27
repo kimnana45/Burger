@@ -29,3 +29,5 @@ The burger will appear on the left column title "Burger To Eat".
 Once the user click the "Done!" button, the burger will transfer to the right column title "Burger Eaten". 
 
 <img src="public/assets/demo/Burger2.png">
+
+## Deployment 
