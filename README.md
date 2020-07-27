@@ -16,6 +16,6 @@ This app follows the MVC design pattern; use Node and MySQL to query and route d
 ## Start 
 This is how the page look when it first load. 
 
-<img src="public">
+<img src="public/assets/demo/burgerApp.png">
 
 
