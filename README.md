@@ -20,4 +20,6 @@ This is how the page look when it first load.
 
 User input the name of the burger that they want in the white box and click "Let's eat" button. 
 
+<img src="public/assets/demo/BurgerOrder.png">
+
 
