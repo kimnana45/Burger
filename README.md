@@ -24,4 +24,6 @@ User input the name of the burger that they want in the white box and click "Let
 
 The burger will appear on the left column title "Burger To Eat".
 
+<img src="public/assets/demo/ThisBurger.png">
+
 
