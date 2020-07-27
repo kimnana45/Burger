@@ -11,5 +11,6 @@ The app will store every burger in a database, whether devoured or not.
 
 ## Technologies Used 
 MySQL, Node.js, Express, Handlebars, and customized ORM.
+This app follows the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 
 
